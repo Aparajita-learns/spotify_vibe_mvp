@@ -1,0 +1,106 @@
+song_id,title,artist,genre,energy,valence,danceability,tempo,mood_tags,context_tags,lyrics_theme,popularity
+1,Blinding Lights,The Weeknd,synthwave,0.80,0.65,0.51,171,energetic|hype|night,driving|workout|party,hopeful,92
+2,Sunset Drive,Artist A,indie-pop,0.42,0.71,0.58,96,chill|warm|sunset,evening|solo|driving,hopeful,78
+3,Bad Guy,Billie Eilish,dark-pop,0.43,0.56,0.70,135,moody|dark|creepy,late night|workout,rebellious,89
+4,Weightless,Marconi Union,ambient,0.05,0.10,0.15,70,calm|peaceful|sleepy,meditation|sleep|focus,peaceful,65
+5,Bohemian Rhapsody,Queen,rock,0.83,0.55,0.40,143,epic|dramatic|theatrical,singalong|karaoke,triumphant,90
+6,Lose Yourself,Eminem,hip-hop,0.89,0.59,0.69,86,hype|intense|motivational,workout|focus,triumphant,88
+7,Get Lucky,Daft Punk,disco,0.81,0.86,0.79,116,happy|funky|groovy,party|dancing|driving,hopeful,85
+8,Sweater Weather,The Neighbourhood,indie-rock,0.53,0.40,0.61,124,cozy|melancholic|chill,autumn|rainy evening|solo,romantic,87
+9,Midnight City,M83,synthpop,0.78,0.48,0.70,105,epic|dreamy|nostalgic,driving|night|late night drive,hopeful,82
+10,Take Five,Dave Brubeck,jazz,0.30,0.50,0.65,174,classy|relaxing|smooth,reading|morning|focus,peaceful,75
+11,Gymnopedie No. 1,Erik Satie,classical,0.02,0.20,0.30,75,calm|melancholic|peaceful,sleep|rainy evening|reading,melancholic,78
+12,Intro,The xx,indie-pop,0.30,0.40,0.60,120,dreamy|minimalist|chill,late night|focus|night,peaceful,80
+13,Starlight,Muse,alternative-rock,0.85,0.50,0.55,122,epic|hopeful|energetic,driving|stargazing,hopeful,79
+14,Lofi Rain,Chill Beats,lo-fi,0.15,0.30,0.50,80,chill|cozy|relaxing,rainy evening|focus|study,peaceful,70
+15,Dynamite,BTS,pop,0.80,0.95,0.75,114,happy|joyful|energetic,party|dancing,joyful,86
+16,Come Fly With Me,Frank Sinatra,jazz,0.45,0.65,0.60,130,classic|happy|classy,morning|travel,romantic,74
+17,Stay,The Kid LAROI & Justin Bieber,pop,0.76,0.48,0.59,170,energetic|angsty|hype,driving|workout,heartbreak,88
+18,So What,Miles Davis,jazz,0.25,0.45,0.55,135,cool|relaxing|smooth,late night|reading,peaceful,72
+19,Mr. Brightside,The Killers,indie-rock,0.90,0.65,0.35,148,hype|angsty|nostalgic,singalong|party,heartbreak,87
+20,Clair de Lune,Claude Debussy,classical,0.05,0.15,0.25,60,peaceful|dreamy|romantic,stargazing|sleep|rainy evening,peaceful,81
+21,Level Up,Ciara,r&b,0.82,0.70,0.88,135,hype|energetic|motivational,workout|dancing,triumphant,73
+22,Fix You,Coldplay,alternative-rock,0.40,0.20,0.30,138,sad|melancholic|hopeful,late night|rainy evening,hopeful,85
+23,Ocean Eyes,Billie Eilish,pop,0.20,0.15,0.45,135,dreamy|sad|vulnerable,rainy evening|solo|sleep,romantic,84
+24,Breezin,George Benson,jazz,0.50,0.80,0.70,84,chill|warm|groovy,morning|driving,hopeful,68
+25,Bangarang,Skrillex,edm,0.95,0.40,0.70,110,hype|aggressive|chaotic,workout|gaming,rebellious,78
+26,Slow Dancing in a Burning Room,John Mayer,blues-rock,0.45,0.35,0.60,133,bluesy|melancholic|smooth,late night|rainy evening,heartbreak,81
+27,Levitating,Dua Lipa,pop,0.82,0.91,0.70,103,happy|joyful|groovy,dancing|party|driving,romantic,88
+28,Superstition,Stevie Wonder,funk,0.80,0.90,0.80,98,funky|groovy|energetic,dancing|party,hopeful,82
+29,Drive,Incubus,alternative-rock,0.55,0.60,0.65,90,chill|nostalgic|thoughtful,driving|solo,hopeful,76
+30,Riders on the Storm,The Doors,classic-rock,0.45,0.50,0.70,105,moody|chill|rainy,rainy evening|driving,mysterious,78
+31,Starboy,The Weeknd,r&b,0.68,0.49,0.68,186,cool|confident|dark,night|driving,rebellious,89
+32,Breathe Me,Sia,indie-pop,0.30,0.15,0.40,120,sad|vulnerable|melancholic,solo|rainy evening,heartbreak,75
+33,Welcome to the Black Parade,My Chemical Romance,emo-rock,0.88,0.25,0.30,191,epic|angsty|theatrical,workout|singalong,hopeful,80
+34,Resonance,Home,synthwave,0.55,0.65,0.68,170,nostalgic|dreamy|chill,stargazing|driving|late night drive,peaceful,77
+35,Voodoo Child,Jimi Hendrix,classic-rock,0.85,0.60,0.50,110,energetic|aggressive|raw,driving|workout,rebellious,74
+36,Sunrise,Norah Jones,vocal-jazz,0.25,0.68,0.55,157,warm|calm|peaceful,morning|coffee,romantic,78
+37,Wake Me Up,Avicii,edm,0.78,0.64,0.53,124,happy|hopeful|hype,party|workout|driving,hopeful,85
+38,Skinny Love,Bon Iver,indie-folk,0.34,0.25,0.40,76,sad|vulnerable|raw,solo|rainy evening,heartbreak,77
+39,Sunflower,Post Malone & Swae Lee,pop,0.48,0.91,0.76,90,happy|warm|chill,morning|driving,romantic,88
+40,Symphony No. 5,Beethoven,classical,0.85,0.30,0.30,108,intense|dramatic|epic,focus|study,triumphant,76
+41,Coffee,Beabadoobee,indie-pop,0.12,0.45,0.50,75,cozy|chill|sweet,coffee|morning|rainy evening,romantic,73
+42,Till I Collapse,Eminem,hip-hop,0.95,0.45,0.75,171,hype|intense|motivational,workout|focus,triumphant,85
+43,Nightcall,Kavinsky,synthwave,0.55,0.40,0.60,117,cool|dark|moody,driving|night|late night drive,mysterious,79
+44,Chamber of Reflection,Mac DeMarco,indie-pop,0.40,0.45,0.60,132,melancholic|dreamy|weird,solo|late night,lonely,79
+45,SICKO MODE,Travis Scott,hip-hop,0.73,0.45,0.83,155,hype|energetic|trippy,party|workout,rebellious,86
+46,Landslide,Fleetwood Mac,classic-rock,0.25,0.40,0.45,159,sad|nostalgic|peaceful,solo|stargazing,thoughtful,82
+47,Paper Planes,M.I.A.,indie-pop,0.62,0.48,0.45,172,cool|carefree|rebellious,driving|party,rebellious,78
+48,Feeling Good,Nina Simone,jazz,0.65,0.40,0.30,78,confident|triumphant|soulful,morning|focus,triumphant,80
+49,Happier Than Ever,Billie Eilish,pop-rock,0.60,0.20,0.35,160,angsty|melancholic|epic,solo|rainy evening,heartbreak,86
+50,Can't Stop,Red Hot Chili Peppers,funk-rock,0.85,0.70,0.60,91,hype|energetic|funky,workout|driving,triumphant,82
+51,Fly Me to the Moon,Frank Sinatra,jazz,0.35,0.55,0.60,120,classic|romantic|smooth,morning|coffee,romantic,79
+52,Ain't No Mountain High Enough,Marvin Gaye & Tammi Terrell,soul,0.75,0.80,0.65,130,happy|joyful|energetic,singalong|party,hopeful,83
+53,All of Me,John Legend,pop,0.20,0.30,0.40,120,sad|romantic|vulnerable,late night|wedding,romantic,84
+54,Cruel Summer,Taylor Swift,pop,0.70,0.55,0.55,170,happy|angsty|energetic,driving|party,romantic,89
+55,One More Time,Daft Punk,house,0.88,0.75,0.60,123,happy|hype|groovy,party|dancing,joyful,81
+56,Hurt,Johnny Cash,country,0.20,0.10,0.35,93,sad|melancholic|dark,solo|late night,pain,79
+57,Harder Better Faster Stronger,Daft Punk,house,0.80,0.65,0.75,123,energetic|hype|robotic,workout|focus,triumphant,83
+58,Perfect,Ed Sheeran,pop,0.30,0.35,0.60,95,romantic|warm|sweet,wedding|slow dance,romantic,87
+59,Take Me to Church,Hozier,indie-rock,0.65,0.45,0.55,128,dramatic|dark|intense,solo|rainy evening,rebellious,83
+60,No Role Modelz,J. Cole,hip-hop,0.70,0.45,0.70,100,hype|confident|cool,driving|focus,thoughtful,86
+61,Thinking Out Loud,Ed Sheeran,pop,0.25,0.60,0.78,79,romantic|warm|smooth,wedding|slow dance,romantic,84
+62,September,Earth Wind & Fire,funk,0.85,0.98,0.75,126,happy|joyful|groovy,party|dancing,joyful,84
+63,Stayin Alive,Bee Gees,disco,0.70,0.85,0.80,104,happy|confident|groovy,dancing|party|workout,hopeful,81
+64,Walking on Sunshine,Katrina and the Waves,pop,0.90,0.95,0.60,110,happy|joyful|hype,morning|workout,joyful,76
+65,Karma Police,Radiohead,alternative-rock,0.40,0.30,0.40,75,moody|melancholic|paranoid,solo|rainy evening,thoughtful,79
+66,Creep,Radiohead,alternative-rock,0.40,0.10,0.50,92,sad|angsty|vulnerable,solo|late night,lonely,83
+67,Smells Like Teen Spirit,Nirvana,grunge,0.90,0.50,0.45,117,angsty|aggressive|raw,workout|gaming,rebellious,84
+68,Under the Bridge,Red Hot Chili Peppers,alternative-rock,0.45,0.50,0.55,85,melancholic|thoughtful|chill,solo|driving,lonely,81
+69,Paint It Black,The Rolling Stones,classic-rock,0.80,0.45,0.50,159,dark|intense|dramatic,driving|gaming,rebellious,79
+70,Back in Black,AC/DC,hard-rock,0.85,0.75,0.70,92,hype|energetic|badass,workout|driving,triumphant,84
+71,Enter Sandman,Metallica,metal,0.90,0.60,0.55,123,intense|aggressive|hype,workout|gaming,nightmare,79
+72,Sweet Child O Mine,Guns N Roses,hard-rock,0.90,0.65,0.45,125,energetic|joyful|nostalgic,driving|singalong,romantic,82
+73,Wonderwall,Oasis,britpop,0.50,0.45,0.40,174,hopeful|nostalgic|warm,singalong|camping,romantic,81
+74,Bitter Sweet Symphony,The Verve,britpop,0.65,0.50,0.35,171,epic|thoughtful|nostalgic,driving|morning,hopeful,76
+75,Somewhere Over the Rainbow,Israel Kamakawiwoole,folk,0.15,0.80,0.60,85,warm|calm|peaceful,morning|beach,hopeful,79
+76,Clint Eastwood,Gorillaz,indie-pop,0.65,0.55,0.65,168,cool|chill|trippy,driving|late night,mysterious,79
+77,Feel Good Inc,Gorillaz,indie-pop,0.70,0.80,0.80,139,cool|funky|groovy,party|driving,rebellious,82
+78,Electric Feel,MGMT,indie-pop,0.80,0.55,0.75,103,groovy|trippy|funky,party|dancing,romantic,76
+79,Time to Pretend,MGMT,indie-pop,0.80,0.35,0.65,101,nostalgic|cynical|happy,party|driving,youth,74
+80,Take Impala,The Less I Know the Better,indie-pop,0.65,0.80,0.78,117,groovy|cool|melancholic,driving|night,heartbreak,83
+81,Do I Wanna Know,Arctic Monkeys,indie-rock,0.55,0.40,0.70,85,cool|sexy|moody,night|driving,romantic,85
+82,Riptide,Vance Joy,indie-folk,0.70,0.50,0.50,103,happy|warm|carefree,beach|singalong,romantic,83
+83,Dog Days Are Over,Florence and the Machine,indie-pop,0.80,0.60,0.50,150,epic|joyful|triumphant,workout|morning,triumphant,77
+84,Ho Hey,The Lumineers,indie-folk,0.45,0.80,0.70,80,warm|happy|sweet,singalong|morning,romantic,79
+85,Home,Edward Sharpe & The Magnetic Zeros,indie-folk,0.70,0.85,0.50,112,happy|joyful|warm,camping|singalong,romantic,75
+86,Budapest,George Ezra,indie-pop,0.45,0.75,0.70,113,warm|chill|happy,driving|morning,romantic,77
+87,Stubborn Love,The Lumineers,indie-folk,0.50,0.55,0.55,116,hopeful|warm|honest,solo|driving,hopeful,73
+88,Little Talks,Of Monsters and Men,indie-pop,0.75,0.50,0.45,103,epic|hype|melancholic,driving|singalong,hopeful,78
+89,Renegades,X Ambassadors,indie-rock,0.55,0.50,0.50,90,hopeful|motivational|warm,driving|workout,rebellious,76
+90,Yellow,Coldplay,alternative-rock,0.40,0.30,0.40,173,hopeful|warm|nostalgic,stargazing|rainy evening,romantic,86
+91,High Hopes,Panic At The Disco,pop-rock,0.90,0.70,0.55,82,hype|energetic|motivational,workout|focus,triumphant,81
+92,Shut Up and Dance,Walk the Moon,pop,0.85,0.90,0.60,128,happy|joyful|hype,party|dancing,romantic,80
+93,Tongue Tied,Grouplove,indie-pop,0.85,0.75,0.55,113,happy|hype|nostalgic,party|driving,friendship,78
+94,Safe and Sound,Capital Cities,synthpop,0.80,0.70,0.65,118,happy|hopeful|groovy,party|driving,hopeful,77
+95,Pompeii,Bastille,indie-pop,0.70,0.55,0.60,127,epic|nostalgic|hopeful,driving|workout,hopeful,78
+96,Stressed Out,Twenty One Pilots,pop,0.60,0.65,0.70,170,moody|nostalgic|stressed,solo|late night,anxiety,82
+97,Ride,Twenty One Pilots,pop,0.70,0.75,0.65,75,chill|groovy|thoughtful,driving|stargazing,anxiety,79
+98,Heat Hens,Twenty One Pilots,indie-pop,0.70,0.55,0.75,90,moody|cool|dark,driving|night,rebellious,78
+99,Say You Won't Let Go,James Arthur,pop,0.35,0.45,0.35,85,romantic|warm|vulnerable,wedding|morning,romantic,82
+100,Someone You Loved,Lewis Capaldi,pop,0.40,0.30,0.50,110,sad|melancholic|vulnerable,rainy evening|solo,heartbreak,85
+101,Mockingbird,Eminem,hip-hop,0.65,0.50,0.60,84,melancholic|sad|motivational,solo|late night,family,83
+102,Not Like Us,Kendrick Lamar,hip-hop,0.85,0.75,0.80,95,hype|aggressive|confident,party|workout,victory,91
+103,Espresso,Sabrina Carpenter,pop,0.75,0.85,0.82,120,happy|groovy|cool,beach|party|driving,confident,90
+104,MILLION DOLLAR BABY,Tommy Richman,r&b,0.70,0.80,0.85,138,cool|groovy|nostalgic,night|party,rebellious,88
+105,Good Luck Babe,Chappell Roan,pop,0.75,0.60,0.70,120,angsty|dramatic|hype,dancing|party,heartbreak,89

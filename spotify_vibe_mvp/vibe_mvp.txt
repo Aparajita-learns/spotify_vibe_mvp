@@ -1,0 +1,1225 @@
+1      
+
+2     --- 
+
+3      
+
+4     # File 2 — `spotify_vibe_mvp.md` 
+
+5      
+
+6     ```md 
+
+7     # Spotify Vibe — AI-Native MVP Implementation Plan 
+
+8      
+
+9     ## 0. Purpose 
+
+10      
+
+11     Build a separate AI-native MVP called **Spotify Vibe**. 
+
+12      
+
+13     This MVP is NOT the review analysis system. 
+
+14      
+
+15     It should simulate a Spotify-like homepage and demonstrate a new AI-native feature: 
+
+16     - ask the user what mood/vibe they are in 
+
+17     - generate ranked song recommendations from best match to least match 
+
+18     - highlight the top choice in a subtle green box 
+
+19     - explain why the top choice is the best fit right now 
+
+20      
+
+21     The MVP must feel product-like, not like an admin dashboard. 
+
+22      
+
+23     --- 
+
+24      
+
+25     ## 1. Product Goal 
+
+26      
+
+27     Demonstrate an AI-native discovery experience that improves meaningful music discovery by: 
+
+28     - collecting real-time mood intent from the user 
+
+29     - producing transparent recommendations 
+
+30     - explaining why a song was chosen 
+
+31     - reducing the “black box” feeling of recommendations 
+
+32      
+
+33     This MVP should be visually inspired by Spotify’s dark UI, but should not require Spotify internal systems. 
+
+34      
+
+35     --- 
+
+36      
+
+37     ## 2. Recommended Stack 
+
+38      
+
+39     ### Frontend 
+
+40     - Streamlit with custom CSS 
+
+41       OR 
+
+42     - Next.js + Tailwind if a coding agent is comfortable with web frontend 
+
+43      
+
+44     ### Recommended default 
+
+45     Use **Streamlit** for fastest execution. 
+
+46      
+
+47     ### Backend 
+
+48     - Python service layer inside the app 
+
+49      
+
+50     ### Data source 
+
+51     Use one of: 
+
+52     1. static curated song catalog JSON/CSV 
+
+53     2. public sample music metadata dataset 
+
+54     3. manually curated playlist metadata for MVP 
+
+55      
+
+56     ### LLM 
+
+57     Use a free-tier or low-cost model endpoint for: 
+
+58     - interpretation of mood 
+
+59     - reasoning generation 
+
+60     - optional ranking adjustment 
+
+61      
+
+62     ### Why this architecture 
+
+63     - fastest path to a functional MVP 
+
+64     - easiest to deploy publicly 
+
+65     - supports rich UI styling in Streamlit 
+
+66     - does not depend on Spotify auth/API 
+
+67      
+
+68     --- 
+
+69      
+
+70     ## 3. Experience Design 
+
+71      
+
+72     ## 3.1 Main User Flow 
+
+73      
+
+74     1. User lands on dummy Spotify-like homepage 
+
+75     2. User sees hero section for “Spotify Vibe” 
+
+76     3. User enters mood/vibe (examples: chill, heartbroken, gym, rainy evening, focused but low energy) 
+
+77     4. System interprets vibe 
+
+78     5. System ranks candidate songs 
+
+79     6. UI shows: 
+
+80        - top recommendation in subtle green highlight box 
+
+81        - ranked list below from best match to least match 
+
+82        - explanation for why top choice fits now 
+
+83     7. User can refresh / change mood / explore another vibe 
+
+84      
+
+85     --- 
+
+86      
+
+87     ## 4. UI Requirements 
+
+88      
+
+89     ## 4.1 Visual Theme 
+
+90     Use a Spotify-inspired visual style: 
+
+91     - dark background 
+
+92     - slightly lighter cards 
+
+93     - white/gray typography 
+
+94     - green accent for active elements 
+
+95     - rounded recommendation cards 
+
+96      
+
+97     ### Color suggestions 
+
+98     - page background: `#121212` 
+
+99     - card background: `#181818` 
+
+100     - hover card: `#242424` 
+
+101     - text primary: `#FFFFFF` 
+
+102     - text secondary: `#B3B3B3` 
+
+103     - accent green: `#1DB954` 
+
+104     - subtle green box background: `rgba(29, 185, 84, 0.12)` 
+
+105     - subtle green border: `rgba(29, 185, 84, 0.35)` 
+
+106      
+
+107     ## 4.2 Layout 
+
+108      
+
+109     ### Left Sidebar 
+
+110     - logo / app name 
+
+111     - navigation 
+
+112     - maybe “Home”, “Search”, “Your Vibe” 
+
+113      
+
+114     ### Main Content 
+
+115     - hero banner: “Spotify Vibe” 
+
+116     - text input or selectable vibe chips 
+
+117     - recommendation area 
+
+118      
+
+119     ### Recommendation Area 
+
+120     #### Top Pick Card 
+
+121     Must be visually distinct: 
+
+122     - subtle green box 
+
+123     - song title 
+
+124     - artist 
+
+125     - mood fit score 
+
+126     - explanation paragraph 
+
+127      
+
+128     #### Ranked Recommendation List 
+
+129     Show 5–10 songs ranked from best to least match: 
+
+130     - rank number 
+
+131     - song name 
+
+132     - artist 
+
+133     - short rationale tag 
+
+134     - vibe score 
+
+135      
+
+136     --- 
+
+137      
+
+138     ## 5. Folder Structure 
+
+139      
+
+140     ```text 
+
+141     spotify-vibe/ 
+
+142     ├── app.py 
+
+143     ├── requirements.txt 
+
+144     ├── README.md 
+
+145     ├── .env.example 
+
+146     ├── .streamlit/ 
+
+147     │   └── config.toml 
+
+148     ├── assets/ 
+
+149     │   ├── logo.png 
+
+150     │   └── styles.css 
+
+151     ├── data/ 
+
+152     │   ├── songs_catalog.csv 
+
+153     │   ├── mood_taxonomy.json 
+
+154     │   └── seed_playlists.json 
+
+155     ├── src/ 
+
+156     │   ├── config/ 
+
+157     │   │   ├── settings.py 
+
+158     │   │   └── prompts.py 
+
+159     │   ├── data/ 
+
+160     │   │   ├── loader.py 
+
+161     │   │   └── preprocess.py 
+
+162     │   ├── recommender/ 
+
+163     │   │   ├── mood_parser.py 
+
+164     │   │   ├── candidate_generator.py 
+
+165     │   │   ├── ranker.py 
+
+166     │   │   ├── reasoner.py 
+
+167     │   │   └── scorer.py 
+
+168     │   ├── ui/ 
+
+169     │   │   ├── layout.py 
+
+170     │   │   ├── home_page.py 
+
+171     │   │   ├── components.py 
+
+172     │   │   └── theme.py 
+
+173     │   └── utils/ 
+
+174     │       ├── logging.py 
+
+175     │       └── validators.py 
+
+176     └── tests/ 
+
+177         ├── test_mood_parser.py 
+
+178         ├── test_ranker.py 
+
+179         └── test_reasoner.py 
+
+ 
+
+6. Song Catalog Design 
+
+Use a curated metadata table with at least these fields: 
+
+1     song_id,title,artist,genre,energy,valence,danceability,tempo,mood_tags,context_tags,lyrics_theme,popularity 
+
+2     1,Sunset Drive,Artist A,indie-pop,0.42,0.71,0.58,96,"chill|warm|sunset","evening|solo","hopeful",78 
+
+Required fields 
+
+song_id 
+
+title 
+
+artist 
+
+genre 
+
+energy 
+
+valence 
+
+danceability 
+
+tempo 
+
+mood_tags 
+
+context_tags 
+
+lyrics_theme 
+
+popularity 
+
+Why this matters 
+
+The ranking system should not depend entirely on LLM calls. The best implementation is: 
+
+deterministic scoring over song metadata 
+
+LLM only for interpreting input and generating human-readable reasoning 
+
+ 
+
+7. Recommendation Architecture 
+
+7.1 Core Pipeline 
+
+1     User mood input 
+
+2        ↓ 
+
+3     Mood parser 
+
+4        ↓ 
+
+5     Mood profile 
+
+6        ↓ 
+
+7     Candidate generator 
+
+8        ↓ 
+
+9     Scoring engine 
+
+10        ↓ 
+
+11     LLM-assisted reasoning 
+
+12        ↓ 
+
+13     UI render 
+
+7.2 Components 
+
+A. Mood Parser 
+
+Input: 
+
+free text like: 
+
+“I want something calm but not sad” 
+
+“late night city vibes” 
+
+“I need aggressive gym music” 
+
+“I’m nostalgic and slightly emotional” 
+
+Output: 
+
+1     { 
+
+2       "primary_mood": "calm", 
+
+3       "secondary_mood": "hopeful", 
+
+4       "energy_target": 0.35, 
+
+5       "valence_target": 0.62, 
+
+6       "tempo_range": [80, 105], 
+
+7       "context": ["night", "solo"], 
+
+8       "exploration_mode": "safe" 
+
+9     } 
+
+B. Candidate Generator 
+
+Select candidate songs by: 
+
+genre compatibility 
+
+mood tag overlap 
+
+broad numerical fit on energy/valence/tempo 
+
+optional diversity rule 
+
+C. Ranker 
+
+Compute score for each candidate. 
+
+D. Reasoner 
+
+Use LLM to explain why the top song is the best match. 
+
+ 
+
+8. Recommendation Logic 
+
+8.1 Deterministic Scoring Formula 
+
+Use weighted scoring: 
+
+1     final_score = 
+
+2         0.30 * mood_tag_overlap + 
+
+3         0.20 * energy_similarity + 
+
+4         0.15 * valence_similarity + 
+
+5         0.10 * tempo_similarity + 
+
+6         0.10 * context_overlap + 
+
+7         0.10 * lyrics_theme_match + 
+
+8         0.05 * popularity_balance 
+
+Notes 
+
+normalize all values to 0–1 
+
+allow experimentation with weights 
+
+keep scoring transparent and reproducible 
+
+8.2 Ranking Rules 
+
+rank candidates by final score descending 
+
+return top 10 
+
+mark rank 1 as top pick 
+
+if scores are too close, optionally ask LLM to break tie using metadata summary 
+
+ 
+
+9. LLM Role 
+
+Use LLM for: 
+
+parsing vague mood input into structured mood profile 
+
+generating explanation for the top recommendation 
+
+optional fallback if user input is ambiguous 
+
+Do NOT use LLM as the only recommender. The recommendation pipeline should still work without LLM if needed. 
+
+ 
+
+10. Prompt Design 
+
+10.1 Mood Parsing Prompt 
+
+File: src/config/prompts.py 
+
+1     MOOD_PARSE_PROMPT = """ 
+
+2     You are a music mood parser. 
+
+3     Convert the user's mood/vibe input into structured JSON. 
+
+4      
+
+5     Return valid JSON with: 
+
+6     - primary_mood 
+
+7     - secondary_mood 
+
+8     - energy_target (0 to 1) 
+
+9     - valence_target (0 to 1) 
+
+10     - tempo_range ([min, max]) 
+
+11     - context (array) 
+
+12     - exploration_mode (safe, balanced, adventurous) 
+
+13      
+
+14     User input: 
+
+15     {user_input} 
+
+16     """ 
+
+10.2 Recommendation Reasoning Prompt 
+
+1     TOP_PICK_REASON_PROMPT = """ 
+
+2     You are explaining a music recommendation inside an AI-powered music app. 
+
+3      
+
+4     Given: 
+
+5     - user's mood profile 
+
+6     - the top recommended song metadata 
+
+7     - the next 2 alternatives 
+
+8      
+
+9     Write a concise explanation (2-4 sentences) for why the top song is the best fit right now. 
+
+10     The explanation must: 
+
+11     - mention mood fit 
+
+12     - mention musical qualities 
+
+13     - sound personal but not overly emotional 
+
+14     - avoid making up unknown facts 
+
+15      
+
+16     User mood: 
+
+17     {mood_profile} 
+
+18      
+
+19     Top song: 
+
+20     {top_song} 
+
+21      
+
+22     Other candidates: 
+
+23     {other_candidates} 
+
+24     """ 
+
+ 
+
+11. Frontend Structure 
+
+11.1 Streamlit Layout 
+
+Header 
+
+app logo 
+
+title: Spotify Vibe 
+
+subtitle: "Tell us the vibe. We’ll find the soundtrack." 
+
+Input Section 
+
+text input for mood/vibe 
+
+quick chips/buttons: 
+
+Chill 
+
+Focus 
+
+Workout 
+
+Heartbreak 
+
+Rainy Evening 
+
+Late Night Drive 
+
+Happy Chaos 
+
+Action 
+
+“Find My Vibe” button 
+
+Result Section 
+
+Top Pick Area 
+
+Must include: 
+
+subtle green box 
+
+song title + artist 
+
+confidence/match score 
+
+explanation paragraph 
+
+Ranked List 
+
+Each card includes: 
+
+rank 
+
+title 
+
+artist 
+
+small match score 
+
+1-line fit summary 
+
+ 
+
+12. CSS / Styling Requirements 
+
+Add custom CSS through assets/styles.css. 
+
+Top Pick Card Spec 
+
+1     background: rgba(29, 185, 84, 0.10); 
+
+2     border: 1px solid rgba(29, 185, 84, 0.35); 
+
+3     border-radius: 16px; 
+
+4     padding: 20px; 
+
+5     box-shadow: none; 
+
+General Cards 
+
+1     background: #181818; 
+
+2     border-radius: 14px; 
+
+3     padding: 16px; 
+
+Buttons 
+
+Use green accent for CTA. 
+
+Typography 
+
+modern sans-serif 
+
+large title 
+
+subtle secondary labels 
+
+ 
+
+13. Core Modules 
+
+13.1 src/recommender/mood_parser.py 
+
+Responsibilities: 
+
+parse text mood input 
+
+return structured mood profile 
+
+use LLM when API key available 
+
+fallback to rule-based parser otherwise 
+
+13.2 src/recommender/candidate_generator.py 
+
+Responsibilities: 
+
+load songs catalog 
+
+filter songs by rough compatibility 
+
+return candidate pool 
+
+13.3 src/recommender/scorer.py 
+
+Responsibilities: 
+
+compute score components 
+
+return component breakdown 
+
+13.4 src/recommender/ranker.py 
+
+Responsibilities: 
+
+sort candidates by total score 
+
+produce ranked list 
+
+flag top song 
+
+13.5 src/recommender/reasoner.py 
+
+Responsibilities: 
+
+call LLM to explain why top song is best 
+
+fallback to template-based reasoning if no LLM available 
+
+ 
+
+14. Phase-wise Delivery Plan 
+
+Phase 1 — Project Setup + UI Skeleton 
+
+Deliverables 
+
+repo initialized 
+
+Streamlit shell app 
+
+dark Spotify-inspired layout 
+
+placeholder homepage 
+
+Agent Tasks 
+
+create project structure 
+
+create theme CSS 
+
+build sidebar and header 
+
+add dummy cards 
+
+verify responsive layout 
+
+Exit Criteria 
+
+app opens with polished Spotify-inspired dark homepage 
+
+ 
+
+Phase 2 — Song Catalog + Data Loader 
+
+Deliverables 
+
+curated song catalog in CSV 
+
+loader module 
+
+metadata validation 
+
+Agent Tasks 
+
+create sample catalog with at least 100 songs 
+
+add metadata fields 
+
+implement loader 
+
+preprocess tag fields 
+
+add tests 
+
+Exit Criteria 
+
+song catalog loads cleanly into dataframe/object model 
+
+ 
+
+Phase 3 — Mood Input Parsing 
+
+Deliverables 
+
+free-text mood parser 
+
+fallback rule-based parsing 
+
+mood profile output 
+
+Agent Tasks 
+
+implement rule-based parser 
+
+implement optional LLM parser 
+
+normalize to mood profile schema 
+
+add mood presets for chip buttons 
+
+Exit Criteria 
+
+user input maps to structured mood profile reliably 
+
+ 
+
+Phase 4 — Ranking Engine 
+
+Deliverables 
+
+candidate generation 
+
+scoring function 
+
+ranked results list 
+
+Agent Tasks 
+
+implement candidate filter 
+
+implement weighted scoring 
+
+rank songs 
+
+expose score breakdown 
+
+test ranking consistency 
+
+Exit Criteria 
+
+user mood returns ranked list of recommended songs 
+
+ 
+
+Phase 5 — LLM Reasoning Layer 
+
+Deliverables 
+
+explanation for top song 
+
+fallback template if LLM unavailable 
+
+Agent Tasks 
+
+implement reasoner prompt 
+
+generate concise explanation 
+
+ensure reasoning uses known metadata only 
+
+fallback to deterministic template reasoning 
+
+Exit Criteria 
+
+top choice displays a believable, useful explanation 
+
+ 
+
+Phase 6 — Polished Recommendation UI 
+
+Deliverables 
+
+subtle green top pick box 
+
+recommendation cards 
+
+interaction polish 
+
+Agent Tasks 
+
+build highlighted top pick component 
+
+style ranked list cards 
+
+add score pills or indicators 
+
+improve spacing, typography, and hierarchy 
+
+Exit Criteria 
+
+app feels like a demoable consumer feature, not a utility dashboard 
+
+ 
+
+Phase 7 — Deployment 
+
+Deliverables 
+
+public app link 
+
+secrets configured 
+
+final README 
+
+Agent Tasks 
+
+prepare requirements.txt 
+
+configure Streamlit secrets 
+
+deploy to Streamlit Community Cloud 
+
+verify link works publicly 
+
+Exit Criteria 
+
+public URL works end to end 
+
+ 
+
+15. Recommendation Data Contract 
+
+Input: 
+
+1     { 
+
+2       "user_input": "late night drive but a little emotional" 
+
+3     } 
+
+Mood profile output: 
+
+1     { 
+
+2       "primary_mood": "nostalgic", 
+
+3       "secondary_mood": "calm", 
+
+4       "energy_target": 0.45, 
+
+5       "valence_target": 0.40, 
+
+6       "tempo_range": [85, 110], 
+
+7       "context": ["night", "drive"], 
+
+8       "exploration_mode": "balanced" 
+
+9     } 
+
+Recommendation output: 
+
+1     { 
+
+2       "top_pick": { 
+
+3         "song_id": "42", 
+
+4         "title": "Midnight Echo", 
+
+5         "artist": "Artist X", 
+
+6         "score": 0.91, 
+
+7         "reasoning": "This track fits your late-night drive mood because it stays emotionally reflective without feeling too heavy. Its steady tempo and warm atmosphere make it feel immersive and focused, which makes it the strongest match right now." 
+
+8       }, 
+
+9       "ranked_songs": [ 
+
+10         ... 
+
+11       ] 
+
+12     } 
+
+ 
+
+16. Streamlit Page Layout Spec 
+
+Page sections 
+
+Hero 
+
+Mood Input 
+
+Top Pick 
+
+Ranked Songs 
+
+Optional "Try another vibe" 
+
+Top Pick Visual Requirements 
+
+green bordered box 
+
+subtle green tint background 
+
+song title prominent 
+
+reasoning beneath title 
+
+"Best match right now" label 
+
+Ranked Songs Visual Requirements 
+
+vertical list 
+
+compact cards 
+
+score aligned right 
+
+artist and tags below title 
+
+ 
+
+17. requirements.txt Starter 
+
+1     streamlit 
+
+2     pandas 
+
+3     numpy 
+
+4     plotly 
+
+5     python-dotenv 
+
+6     pydantic 
+
+7     scikit-learn 
+
+Optional LLM clients: 
+
+1     openai 
+
+2     anthropic 
+
+ 
+
+18. Environment Variables 
+
+1     OPENAI_API_KEY= 
+
+2     ANTHROPIC_API_KEY= 
+
+3     LLM_PROVIDER=openai 
+
+If no key is available: 
+
+use rule-based parsing 
+
+use template explanation mode 
+
+ 
+
+19. Deployment Plan 
+
+Recommended 
+
+Streamlit Community Cloud 
+
+GitHub-connected deployment 
+
+This is suitable for public demo links and updates directly from repository changes【5065†】【5067†】. 
+
+Deployment Steps 
+
+push repo to GitHub 
+
+connect repo in Streamlit Community Cloud 
+
+set app.py as main file 
+
+add secrets 
+
+deploy 
+
+verify dark theme and CSS load correctly 
+
+ 
+
+20. MVP Acceptance Criteria 
+
+Spotify Vibe is complete when: 
+
+user can enter a mood/vibe 
+
+system returns ranked song recommendations 
+
+top song is highlighted in a subtle green box 
+
+top song includes explanation for why it is best 
+
+the page visually resembles a Spotify-inspired dark UI 
+
+the app is publicly accessible 
+
+ 
+
+21. Non-Goals 
+
+Do not implement: 
+
+real Spotify authentication 
+
+playback controls 
+
+actual Spotify personalization 
+
+production-grade recommendation systems 
+
+copyrighted streaming features 
+
+This is a discovery-focused AI-native prototype. 
+
+ 
+
+22. Final Handoff to Agent 
+
+Build Spotify Vibe as a polished, product-like MVP. 
+
+Priority order: 
+
+strong visual experience 
+
+working mood-to-song pipeline 
+
+ranked recommendation list 
+
+top pick explanation 
+
+public deployment 
+
+The MVP must feel functional and demoable even if the underlying catalog is curated. 
+
+1      
+
+2     --- 
+
+3      
+
+4     ## Best way to use these right now 
+
+5      
+
+6     1. Copy each fenced block into: 
+
+7        - `review_discovery_engine.md` 
+
+8        - `spotify_vibe_mvp.md` 
+
+9     2. Put each into the root of the corresponding repo. 
+
+10     3. Hand them to your coding agent as the **implementation spec**. 
+
+11      
+
+12     If you want, I can do one more very useful step next:   
+
+13     **I can generate the starter `schema.sql`, `requirements.txt`, and `README.md` for both projects as ready-to-paste files.** 

@@ -1,0 +1,458 @@
+/* ============================================================
+   Spotify Vibe — Custom Stylesheet
+   Spotify-inspired dark UI with animated accents
+   ============================================================ */
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ---------- Root Variables ---------- */
+:root {
+    --bg-page: #121212;
+    --bg-card: #181818;
+    --bg-card-hover: #242424;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B3B3B3;
+    --text-muted: #727272;
+    --accent-green: #1DB954;
+    --accent-green-hover: #1ed760;
+    --green-box-bg: rgba(29, 185, 84, 0.10);
+    --green-box-border: rgba(29, 185, 84, 0.35);
+    --green-glow: rgba(29, 185, 84, 0.45);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.35s ease;
+}
+
+/* ---------- Global Reset ---------- */
+.stApp {
+    background-color: var(--bg-page) !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    color: var(--text-primary) !important;
+}
+
+/* Hide default Streamlit decorations and sidebar */
+#MainMenu { visibility: hidden; }
+header { visibility: hidden; }
+footer { visibility: hidden; }
+.stDeployButton { display: none; }
+section[data-testid="stSidebar"] { display: none !important; }
+
+/* Constrain width to simulate mobile screen */
+.block-container {
+    max-width: 414px !important;
+    margin: 0 auto !important;
+    padding: 1rem !important;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-page);
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* ============================================================
+   ANIMATED GLOWING BUTTON (Restored Original Styling)
+   ============================================================ */
+
+/* Outer button acts as the vibe-icon-container */
+.stButton > button[data-testid="stBaseButton-primary"] {
+    position: relative !important;
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    background-color: var(--bg-page) !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 24px auto 12px auto !important;
+    overflow: visible !important;
+    z-index: 2 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* Rotating conic-gradient ring */
+.stButton > button[data-testid="stBaseButton-primary"]::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: -3px !important;
+    border-radius: 50% !important;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        transparent 30%,
+        var(--accent-green) 45%,
+        #1ed760 50%,
+        var(--accent-green) 55%,
+        transparent 70%,
+        transparent 100%
+    ) !important;
+    animation: vibe-spin-button 3s linear infinite !important;
+    z-index: 0 !important;
+}
+
+/* Inner dark mask to create the clean ring edge */
+.stButton > button[data-testid="stBaseButton-primary"]::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 3px !important;
+    border-radius: 50% !important;
+    background: var(--bg-page) !important;
+    z-index: 1 !important;
+}
+
+/* Inner container (stMarkdownContainer) acts as the vibe-icon with radial gradient glow */
+.stButton > button[data-testid="stBaseButton-primary"] div[data-testid="stMarkdownContainer"] {
+    position: relative !important;
+    z-index: 2 !important;
+    width: 60px !important;
+    height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: radial-gradient(circle at center, rgba(29,185,84,0.18) 0%, transparent 70%) !important;
+    border-radius: 50% !important;
+}
+
+/* Ensure the emoji matches the original font size */
+.stButton > button[data-testid="stBaseButton-primary"] div[data-testid="stMarkdownContainer"] p {
+    font-size: 28px !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    color: var(--accent-green) !important;
+}
+
+.stButton > button[data-testid="stBaseButton-primary"]:hover {
+    transform: scale(1.05) !important;
+}
+
+.stButton > button[data-testid="stBaseButton-primary"]:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+@keyframes vibe-spin-button {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hero-section {
+    text-align: center;
+    padding: 48px 24px 32px 24px;
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, var(--accent-green) 0%, #1ed760 40%, #a8ff78 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-top: 0;
+    letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   SIDEBAR (Hidden in mobile view, but styles kept for reference)
+   ============================================================ */
+
+/* ============================================================
+   MOOD INPUT
+   ============================================================ */
+
+.mood-input-section {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 24px 32px 24px;
+    text-align: center;
+}
+
+/* Style the Streamlit text input */
+.stTextInput > div > div {
+    background: #282828 !important;
+    border: 1px solid #333 !important;
+    border-radius: 999px !important;
+    color: var(--text-primary) !important;
+    padding: 12px 20px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1rem !important;
+    transition: border-color var(--transition-fast);
+}
+
+.stTextInput > div > div:focus-within {
+    border-color: var(--accent-green) !important;
+    box-shadow: 0 0 0 2px rgba(29, 185, 84, 0.2) !important;
+}
+
+/* ============================================================
+   VIBE CHIPS
+   ============================================================ */
+
+.chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.vibe-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: 'Inter', sans-serif;
+}
+
+.vibe-chip:hover {
+    background: rgba(29, 185, 84, 0.15);
+    border-color: var(--accent-green);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+
+
+
+/* ============================================================
+   TOP PICK CARD — Green Highlight
+   ============================================================ */
+
+.top-pick-card {
+    background: var(--green-box-bg);
+    border: 1px solid var(--green-box-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin: 24px auto;
+    max-width: 640px;
+    position: relative;
+    transition: all var(--transition-medium);
+}
+
+.top-pick-card:hover {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 30px rgba(29, 185, 84, 0.12);
+}
+
+.top-pick-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--accent-green);
+    margin-bottom: 12px;
+}
+
+.top-pick-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.top-pick-artist {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.top-pick-score {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(29, 185, 84, 0.2);
+    color: var(--accent-green);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.top-pick-reason {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* ============================================================
+   RANKED SONG CARDS
+   ============================================================ */
+
+.song-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.song-card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(255, 255, 255, 0.06);
+    transform: translateX(4px);
+}
+
+.song-rank {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    min-width: 28px;
+    text-align: center;
+}
+
+.song-info {
+    flex: 1;
+}
+
+.song-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.song-artist {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.song-tag {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.song-score-pill {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+
+.section-header {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 32px 0 16px 0;
+    letter-spacing: -0.3px;
+}
+
+.section-subheader {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: -12px;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+/* ============================================================
+   DUMMY CONTENT CARDS (Phase 1 placeholder)
+   ============================================================ */
+
+.content-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    border: 1px solid transparent;
+    height: 100%;
+}
+
+.content-card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(255, 255, 255, 0.06);
+    transform: translateY(-2px);
+}
+
+.content-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.content-card-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+/* ============================================================
+   PLACEHOLDER ALBUM ART (colored circles)
+   ============================================================ */
+
+.album-art {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+    .top-pick-card {
+        margin: 16px 8px;
+    }
+}
