@@ -4,7 +4,25 @@ All HTML strings must start at column 0 (no leading whitespace)
 to prevent Streamlit's markdown renderer from treating them as code blocks.
 """
 
+import streamlit as st
+
+
+def vibe_chips(moods: dict[str, str]) -> str:
+    return ""
+
+
+def vibe_chips_buttons(moods: dict[str, str]):
+    st.markdown('<div class="chip-grid">', unsafe_allow_html=True)
+    cols = st.columns(len(moods))
+    selected = None
+    for col, (label, emoji) in zip(cols, moods.items()):
+        with col:
+            if st.button(f"{emoji} {label}", key=f"chip_{label}"):
+                selected = label
+    st.markdown('</div>', unsafe_allow_html=True)
+    return selected
 from textwrap import dedent
+import urllib.parse
 
 
 def animated_vibe_icon() -> str:
@@ -29,37 +47,6 @@ def hero_section() -> str:
 {icon}
 <div class="hero-title">Spotify Vibe</div>
 <div class="hero-subtitle">Tell us the vibe. We'll find the soundtrack.</div>
-</div>""")
-
-
-import urllib.parse
-
-def vibe_chips(moods: dict[str, str]) -> str:
-    """
-    Returns HTML for quick-select mood chips.
-    moods: dict of {label: emoji}
-    """
-    chips_html = ""
-    for label, emoji in moods.items():
-        encoded_label = urllib.parse.quote(label)
-        chips_html += (
-            f'<a href="?show_vibe=true&mood={encoded_label}" target="_self" style="text-decoration:none;">'
-            f'<span class="vibe-chip">{emoji} {label}</span>'
-            f'</a>\n'
-        )
-    return f'<div class="chip-container">{chips_html}</div>'
-
-
-def top_pick_card(title: str, artist: str, score: float, reason: str) -> str:
-    """Returns the highlighted top pick card HTML."""
-    score_pct = int(score * 100)
-    return dedent(f"""\
-<div class="top-pick-card">
-<div class="top-pick-label">✨ Best match right now</div>
-<div class="top-pick-title">{title}</div>
-<div class="top-pick-artist">{artist}</div>
-<div class="top-pick-score">🎯 {score_pct}% match</div>
-<div class="top-pick-reason">{reason}</div>
 </div>""")
 
 

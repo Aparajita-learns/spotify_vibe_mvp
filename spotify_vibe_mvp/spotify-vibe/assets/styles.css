@@ -208,37 +208,31 @@ section[data-testid="stSidebar"] { display: none !important; }
 }
 
 /* ============================================================
-   VIBE CHIPS
+   VIBE CHIPS — Native Streamlit buttons
    ============================================================ */
 
-.chip-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 16px;
+.chip-grid .stButton > button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 8px 18px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #B3B3B3 !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    font-family: 'Inter', sans-serif !important;
+    white-space: nowrap !important;
 }
 
-.vibe-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 18px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    font-family: 'Inter', sans-serif;
-}
-
-.vibe-chip:hover {
-    background: rgba(29, 185, 84, 0.15);
-    border-color: var(--accent-green);
-    color: var(--text-primary);
+.chip-grid .stButton > button:hover {
+    background: rgba(29, 185, 84, 0.15) !important;
+    border-color: #1DB954 !important;
+    color: #FFFFFF !important;
     transform: translateY(-1px);
 }
 

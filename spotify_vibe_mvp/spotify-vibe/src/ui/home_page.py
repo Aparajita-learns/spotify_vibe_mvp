@@ -7,6 +7,7 @@ import streamlit as st
 from src.ui.components import (
     hero_section,
     vibe_chips,
+    vibe_chips_buttons,
     section_header,
     content_card,
     top_pick_card,
@@ -127,8 +128,11 @@ def render_vibe_feature():
         label_visibility="collapsed",
     )
 
-    # Quick-select mood chips
-    st.markdown(vibe_chips(MOOD_ICONS), unsafe_allow_html=True)
+    selected_chip = vibe_chips_buttons(MOOD_ICONS)
+    if selected_chip and selected_chip != st.session_state.get("prev_query_mood"):
+        st.session_state.mood_input_val = selected_chip
+        st.session_state.prev_query_mood = selected_chip
+        st.rerun()
     st.markdown("</div>", unsafe_allow_html=True)
 
     # ── CTA Button ──
