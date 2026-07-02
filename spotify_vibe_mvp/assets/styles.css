@@ -208,25 +208,47 @@ section[data-testid="stSidebar"] { display: none !important; }
 }
 
 /* ============================================================
-   VIBE CHIPS — Native Streamlit buttons
+   VIBE CHIPS — Streamlit secondary button styling
    ============================================================ */
 
-.chip-grid .stButton > button {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    padding: 8px 18px !important;
+/* Target secondary buttons for chip styling */
+.stButton > button[kind="secondary"] {
+    padding: 4px 12px !important;
+    font-size: 0.75rem !important;
     border-radius: 999px !important;
     background: rgba(255, 255, 255, 0.06) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     color: #B3B3B3 !important;
-    font-size: 0.85rem !important;
+    height: auto !important;
+    min-height: 0 !important;
+    line-height: 1.2 !important;
+}
+
+.stButton > button[kind="secondary"]:hover {
+    background: rgba(29, 185, 84, 0.15) !important;
+    border-color: #1DB954 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1px);
+}
+
+.chip-grid .stButton > button {
+    flex: 0 0 auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 6px 16px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #B3B3B3 !important;
+    font-size: 0.8rem !important;
     font-weight: 500 !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
     font-family: 'Inter', sans-serif !important;
     white-space: nowrap !important;
+    min-width: fit-content !important;
 }
 
 .chip-grid .stButton > button:hover {

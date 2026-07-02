@@ -12,16 +12,31 @@ def vibe_chips(moods: dict[str, str]) -> str:
     return ""
 
 
+def _set_mood_chip(label):
+    st.session_state.mood_input_val = label
+    st.session_state.prev_query_mood = label
+
+
 def vibe_chips_buttons(moods: dict[str, str]):
-    st.markdown('<div class="chip-grid">', unsafe_allow_html=True)
-    cols = st.columns(len(moods))
-    selected = None
-    for col, (label, emoji) in zip(cols, moods.items()):
-        with col:
-            if st.button(f"{emoji} {label}", key=f"chip_{label}"):
-                selected = label
-    st.markdown('</div>', unsafe_allow_html=True)
-    return selected
+    items = list(moods.items())
+    mid = (len(items) + 1) // 2
+    row1 = items[:mid]
+    row2 = items[mid:]
+    rows = [row1] if not row2 else [row1, row2]
+    for idx, row in enumerate(rows):
+        cols = st.columns(len(row))
+        for col, (label, emoji) in zip(cols, row):
+            with col:
+                st.button(
+                    f"{emoji}\u2009{label}",
+                    key=f"chip_{label}",
+                    type="secondary",
+                    use_container_width=True,
+                    on_click=_set_mood_chip,
+                    args=(label,),
+                )
+        if len(rows) > 1 and idx < len(rows) - 1:
+            st.markdown("<br>", unsafe_allow_html=True)
 
 
 def animated_vibe_icon() -> str:
@@ -45,7 +60,6 @@ def hero_section() -> str:
 
 
 def top_pick_card(title: str, artist: str, score: float, reason: str) -> str:
-    """Returns the highlighted top pick card HTML."""
     score_pct = int(score * 100)
     return dedent(f"""\
 <div class="top-pick-card">

@@ -21,7 +21,7 @@ why each song was chosen.
 ```bash
 # 1. Clone the repo
 git clone <repo-url>
-cd spotify-vibe
+cd spotify_vibe_mvp
 
 # 2. Create a virtual environment
 python -m venv venv
@@ -42,7 +42,7 @@ streamlit run app.py
 ## 📁 Project Structure
 
 ```
-spotify-vibe/
+spotify_vibe_mvp/
 ├── app.py                  # Streamlit entry point
 ├── requirements.txt        # Python dependencies
 ├── .env.example            # Environment variable template

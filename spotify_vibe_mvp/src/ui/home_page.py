@@ -26,11 +26,9 @@ def render_spotify_home():
         unsafe_allow_html=True,
     )
 
-    # ── Clickable animated Spotify Vibe icon (Native st.button styled via CSS) ──
+    # ── Clickable animated Spotify Vibe icon ──
     st.markdown('<div style="text-align:center; margin:24px 0 8px 0;">', unsafe_allow_html=True)
     
-    # We render the button using type="primary". The CSS will style all primary buttons
-    # on this page to have the rotating border and pulsing glow.
     if st.button("🎵", key="vibe_launcher", type="primary"):
         st.session_state.show_vibe = True
         if not st.query_params.get("mood"):
@@ -71,7 +69,7 @@ def render_spotify_home():
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # ── Trending section ──
+    # Trending section
     st.markdown(
         section_header("Trending Vibes", "Popular moods across listeners"),
         unsafe_allow_html=True,
@@ -99,27 +97,24 @@ def render_vibe_feature():
         st.session_state.show_vibe = False
         st.query_params.clear()
         if "mood_input_val" in st.session_state:
-            st.session_state.mood_input_val = ""
+            del st.session_state.mood_input_val
         if "prev_query_mood" in st.session_state:
-            st.session_state.prev_query_mood = ""
+            del st.session_state.prev_query_mood
         st.rerun()
 
-    # ── Hero section with animated glowing icon ──
     st.markdown(hero_section(), unsafe_allow_html=True)
 
-    # ── Mood input area ──
     st.markdown(
         '<div class="mood-input-section">',
         unsafe_allow_html=True,
     )
 
+    if "prev_query_mood" not in st.session_state:
+        st.session_state.prev_query_mood = ""
     if "mood_input_val" not in st.session_state:
         st.session_state.mood_input_val = ""
 
-    query_mood = st.query_params.get("mood", "")
-    if query_mood and st.session_state.get("prev_query_mood") != query_mood:
-        st.session_state.mood_input_val = query_mood
-        st.session_state.prev_query_mood = query_mood
+    vibe_chips_buttons(MOOD_ICONS)
 
     mood_input = st.text_input(
         "What's your vibe right now?",
@@ -127,15 +122,9 @@ def render_vibe_feature():
         placeholder="e.g. chill evening, gym energy, rainy day nostalgia...",
         label_visibility="collapsed",
     )
-
-    selected_chip = vibe_chips_buttons(MOOD_ICONS)
-    if selected_chip and selected_chip != st.session_state.get("prev_query_mood"):
-        st.session_state.mood_input_val = selected_chip
-        st.session_state.prev_query_mood = selected_chip
-        st.rerun()
     st.markdown("</div>", unsafe_allow_html=True)
 
-    # ── CTA Button ──
+    # CTA Button
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         find_clicked = st.button("🎵 Find My Vibe", type="secondary", use_container_width=True)
@@ -149,7 +138,7 @@ def render_vibe_feature():
         st.error(f"Failed to load song catalog: {e}")
         return
 
-    # ── Parse and display mood profile ──
+    # Parse and display mood profile
     if mood_input:
         from src.recommender.mood_parser import parse_mood
         from src.recommender.candidate_generator import generate_candidates
@@ -214,7 +203,6 @@ def render_vibe_feature():
 
 def render_home_page():
     """Main router between Spotify Home Mock and Vibe Feature."""
-    # Check query parameters for state trigger
     if st.query_params.get("show_vibe") == "true":
         st.session_state.show_vibe = True
 
